@@ -16,9 +16,9 @@ host_ip   = '-i -k https://inventory.las.ch'
 #host_ip    = '-i --url http://127.0.0.1:4567'
 #host_ip    = '-i http://127.0.0.1:4567'
 
-auth = YAML::load_file("auth.yml")
-usrname = auth['usrname']
-passwd  = auth['passwd']
+auth = YAML::load_file("inventory.yml")
+usrname = auth['user']
+passwd  = auth['pass']
 
 #puts "usrname: #{usrname}, passwd: #{passwd}"
 #puts
@@ -48,8 +48,8 @@ f.close
 
 test_user = results_hash.fetch("last_user")
 
-if File::exists?("imageversion.txt")
-   f = File.open("imageversion.txt")
+if File::exists?("image-version.txt")
+   f = File.open("image-version.txt")
    f.each do |line|
      results_hash["image_vers"] = line.chomp
    end
